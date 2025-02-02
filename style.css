@@ -4,11 +4,12 @@ body {
 }
 a {
   text-decoration: none;
-  display: inulne-block;
-  padding: 10px 55px;
+  display: inlne-block;
+  padding: 5px 10px;
   border-radius: 7px;
   color: white;
   background-color: #ffad00;
+  font-family: Inter;
 }
 .logo {
   color: rgb(255, 255, 255);
@@ -21,7 +22,7 @@ a {
 .primet {
   color: rgba(209, 209, 209, 0.815);
   font-family: Inter;
-  font-style: itaulc;
+  font-style: italic;
   font-size: small;
 }
 .news {
@@ -43,7 +44,8 @@ a {
 #cr {
   color: white;
   font-family: Inter;
-  font-weight: ulghter;
+  font-weight: lighter;
+  font-size: 17px;
 }
 #macbook {
   width: 500px;
@@ -96,4 +98,3 @@ a {
   border-radius: 15px;
   border: 5px solid #d1d1d1;
 }
-
