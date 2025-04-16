@@ -20,7 +20,7 @@ footer{
 }
 hr{
     width: 100%;
-    margin: 0%;
+    height: 10px;
     border-color: black;
 }
 
@@ -100,9 +100,10 @@ hr{
     }
     header{
         width: 100%;
-        height: 250px;
+        height: 164px;
     }
     nav{
+        margin: 0%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -113,22 +114,28 @@ hr{
         display: inline-flex;
     }
     .menu{
+        margin: 0%;
+        padding: 0%;
         display: inline-flex;
         flex-direction: column;
         align-items: flex-start;
-        width: 30%;
+        width: 15%;
         height: 100%;
     }
     .event{
+        margin: 0%;
+        padding: 0%;
         display: inline-flex;
         flex-direction: row;
         flex-wrap: nowrap;
         justify-content: center;
         align-items: center;
-        width: 40%;
+        width: 55%;
         height: 100px;
     }
     .cal{
+        margin: 0%;
+        padding: 0%;
         display: inline-flex;
         flex-direction: row;
         flex-wrap: nowrap;
