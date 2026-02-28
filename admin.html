@@ -28,6 +28,57 @@
                     <h2 class="admin-header__title">Статистика проекта</h2>
                     <p class="admin-header__subtitle" id="lastUpdate">обновлено только что</p>
                 </div>
+                
+                <!-- Статистика устройств и браузеров -->
+<div class="admin-columns">
+    <div class="admin-card">
+        <h3 class="admin-card__title">📱 Устройства</h3>
+        <div class="tech-stats" id="devicesStats">
+            <div class="tech-row">
+                <span>Мобильные</span>
+                <span class="tech-value" id="mobilePct">0%</span>
+            </div>
+            <div class="tech-row">
+                <span>Планшеты</span>
+                <span class="tech-value" id="tabletPct">0%</span>
+            </div>
+            <div class="tech-row">
+                <span>Десктоп</span>
+                <span class="tech-value" id="desktopPct">0%</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="admin-card">
+        <h3 class="admin-card__title">🌐 Браузеры</h3>
+        <div class="tech-stats" id="browsersStats">
+            <div class="tech-row">
+                <span>Chrome</span>
+                <span class="tech-value" id="chromePct">0%</span>
+            </div>
+            <div class="tech-row">
+                <span>Firefox</span>
+                <span class="tech-value" id="firefoxPct">0%</span>
+            </div>
+            <div class="tech-row">
+                <span>Safari</span>
+                <span class="tech-value" id="safariPct">0%</span>
+            </div>
+            <div class="tech-row">
+                <span>Edge</span>
+                <span class="tech-value" id="edgePct">0%</span>
+            </div>
+            <div class="tech-row">
+                <span>Opera</span>
+                <span class="tech-value" id="operaPct">0%</span>
+            </div>
+            <div class="tech-row">
+                <span>Другие</span>
+                <span class="tech-value" id="otherPct">0%</span>
+            </div>
+        </div>
+    </div>
+</div>
 
                 <div class="stats-grid" id="mainStats">
                     <div class="stat-card">
@@ -112,6 +163,17 @@
                         <button class="upload-preview__button" id="confirmUpload">Сохранить локально</button>
                     </div>
                 </div>
+
+                <!-- Локальные истории (можно удалять) -->
+<div class="admin-card">
+    <h3 class="admin-card__title">📁 Локальные истории (в браузере)</h3>
+    <div id="localStoriesList" class="local-stories-list">
+        <!-- Сюда будут подгружаться истории -->
+    </div>
+    <button class="quick-action-button" id="refreshLocalList" style="margin-top: 16px;">
+        🔄 Обновить список
+    </button>
+</div>
 
                 <div class="quick-actions">
                     <button class="quick-action-button" id="resetStats">🔄 Сбросить статистику</button>
