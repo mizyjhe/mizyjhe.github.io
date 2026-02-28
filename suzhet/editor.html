@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сюжет — Редактор историй</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/editor.css">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="header__container">
+                <h1 class="logo">Сюжет</h1>
+                <nav class="nav">
+                    <a href="index.html" class="nav__link">На главную</a>
+                    <span class="nav__link editor-badge">Редактор</span>
+                </nav>
+            </div>
+        </header>
+
+        <main class="main">
+            <div class="main__container">
+                <div class="editor-header">
+                    <h2 class="editor-header__title">📝 Редактор историй</h2>
+                    <p class="editor-header__subtitle">Создавай интерактивные истории визуально</p>
+                </div>
+
+                <div class="editor-layout">
+                    <div class="editor-sidebar">
+                        <div class="editor-card">
+                            <h3 class="editor-card__title">📚 Общая информация</h3>
+                            
+                            <div class="editor-field">
+                                <label>Название истории</label>
+                                <input type="text" id="storyTitle" placeholder="Например: Тайна старого дома" class="editor-input">
+                            </div>
+
+                            <div class="editor-field">
+                                <label>Жанр</label>
+                                <select id="storyGenre" class="editor-select">
+                                    <option value="Мистика">Мистика</option>
+                                    <option value="Детектив">Детектив</option>
+                                    <option value="Драма">Драма</option>
+                                    <option value="Романтика">Романтика</option>
+                                    <option value="Фантастика">Фантастика</option>
+                                    <option value="Триллер">Триллер</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="editor-card">
+                            <h3 class="editor-card__title">👥 Персонажи</h3>
+                            <div id="charactersList" class="characters-list"></div>
+                            <button class="editor-button editor-button--secondary" id="addCharacterBtn">
+                                + Добавить персонажа
+                            </button>
+                        </div>
+
+                        <div class="editor-card">
+                            <h3 class="editor-card__title">📤 Экспорт</h3>
+                            <button class="editor-button" id="exportStoryBtn">💾 Сохранить в .txt</button>
+                            <button class="editor-button editor-button--secondary" id="saveLocalBtn">📱 Сохранить локально</button>
+                            <p class="editor-hint">Локальное сохранение — история появится на главной только у тебя</p>
+                        </div>
+                    </div>
+
+                    <div class="editor-main">
+                        <div class="editor-card">
+                            <div class="scenes-header">
+                                <h3 class="editor-card__title">🎬 Сцены</h3>
+                                <button class="editor-button editor-button--small" id="addSceneBtn">+ Новая сцена</button>
+                            </div>
+                            <div id="scenesContainer" class="scenes-container"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/stories.js"></script>
+    <script src="js/editor.js"></script>
+</body>
+</html>

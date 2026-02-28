@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сюжет — админ-панель</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="header__container">
+                <h1 class="logo">Сюжет</h1>
+                <nav class="nav">
+                    <a href="/" class="nav__link nav__link--active">Главная</a>
+                </nav>
+                <div class="admin-badge">Админ-панель</div>
+            </div>
+        </header>
+
+        <main class="main">
+            <div class="main__container">
+                <div class="admin-header">
+                    <h2 class="admin-header__title">Статистика проекта</h2>
+                    <p class="admin-header__subtitle" id="lastUpdate">обновлено только что</p>
+                </div>
+
+                <div class="stats-grid" id="mainStats">
+                    <div class="stat-card">
+                        <div class="stat-card__icon">👥</div>
+                        <div class="stat-card__content">
+                            <span class="stat-card__label">Сейчас онлайн</span>
+                            <span class="stat-card__value" id="onlineNow">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card__icon">📅</div>
+                        <div class="stat-card__content">
+                            <span class="stat-card__label">Сегодня</span>
+                            <span class="stat-card__value" id="todayVisits">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card__icon">📊</div>
+                        <div class="stat-card__content">
+                            <span class="stat-card__label">Вчера</span>
+                            <span class="stat-card__value" id="yesterdayVisits">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card__icon">📚</div>
+                        <div class="stat-card__content">
+                            <span class="stat-card__label">Всего визитов</span>
+                            <span class="stat-card__value" id="totalVisits">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-card__icon">📄</div>
+                        <div class="stat-card__content">
+                            <span class="stat-card__label">Историй в папке</span>
+                            <span class="stat-card__value" id="storiesCount">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card__icon">💬</div>
+                        <div class="stat-card__content">
+                            <span class="stat-card__label">Всего сообщений</span>
+                            <span class="stat-card__value" id="totalMessages">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card__icon">⭐</div>
+                        <div class="stat-card__content">
+                            <span class="stat-card__label">Популярная</span>
+                            <span class="stat-card__value" id="popularStory">—</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card__icon">🔤</div>
+                        <div class="stat-card__content">
+                            <span class="stat-card__label">Всего символов</span>
+                            <span class="stat-card__value" id="totalChars">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-card upload-card">
+                    <h3 class="admin-card__title">📂 Загрузить историю (локально)</h3>
+                    <p class="admin-card__description">.txt файл в формате сюжета</p>
+                    
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-area__icon">📄</div>
+                        <div class="upload-area__text">
+                            <span class="upload-area__primary">Выберите файл</span>
+                            <span class="upload-area__secondary">или перетащите сюда</span>
+                        </div>
+                        <input type="file" id="fileInput" accept=".txt" style="display: none;">
+                    </div>
+
+                    <div class="upload-preview" id="uploadPreview" style="display: none;">
+                        <div class="upload-preview__header">
+                            <span class="upload-preview__name">файл.txt</span>
+                            <span class="upload-preview__size">0 КБ</span>
+                        </div>
+                        <button class="upload-preview__button" id="confirmUpload">Сохранить локально</button>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <button class="quick-action-button" id="resetStats">🔄 Сбросить статистику</button>
+                    <button class="quick-action-button" id="exportStats">📥 Экспорт в JSON</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/stories.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
