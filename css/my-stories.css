@@ -1,0 +1,563 @@
+/* my-stories.css — полная версия */
+
+.page-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.page-header__title {
+    font-size: 2.2rem;
+    background: linear-gradient(135deg, #fff, var(--neon-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+}
+
+.page-header__subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+/* Секция загрузки */
+.upload-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 32px;
+    padding: 28px;
+    margin-bottom: 30px;
+}
+
+.upload-section__header {
+    margin-bottom: 20px;
+}
+
+.upload-section__title {
+    font-size: 1.3rem;
+    color: var(--neon-cyan);
+    margin-bottom: 8px;
+}
+
+.upload-section__description {
+    color: var(--text-secondary);
+}
+
+.upload-area {
+    background: var(--bg-secondary);
+    border: 2px dashed var(--border-light);
+    border-radius: 24px;
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 20px;
+}
+
+.upload-area:hover {
+    border-color: var(--neon-cyan);
+    background: rgba(45, 212, 191, 0.05);
+}
+
+.upload-area.drag-over {
+    border-color: var(--neon-cyan);
+    background: rgba(45, 212, 191, 0.1);
+    transform: scale(1.02);
+}
+
+.upload-area__icon {
+    font-size: 3.5rem;
+    margin-bottom: 16px;
+    opacity: 0.8;
+}
+
+.upload-area__primary {
+    display: block;
+    color: var(--neon-cyan);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.upload-area__secondary {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.upload-preview {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-light);
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 16px;
+    animation: slideIn 0.3s ease;
+}
+
+.upload-preview__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.upload-preview__name {
+    font-weight: 600;
+    color: var(--neon-cyan);
+}
+
+.upload-preview__size {
+    color: var(--text-muted);
+    font-family: monospace;
+}
+
+.upload-preview__button {
+    width: 100%;
+    background: var(--neon-cyan);
+    border: none;
+    color: #000;
+    font-weight: 600;
+    padding: 14px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 1rem;
+}
+
+.upload-preview__button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(45, 212, 191, 0.3);
+}
+
+/* Список историй */
+.stories-management {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 32px;
+    padding: 28px;
+    margin-bottom: 30px;
+}
+
+.stories-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.stories-count {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    padding: 6px 16px;
+    border-radius: 30px;
+}
+
+.refresh-button {
+    background: transparent;
+    border: 1px solid var(--border-light);
+    color: var(--neon-cyan);
+    padding: 8px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.refresh-button:hover {
+    border-color: var(--neon-cyan);
+    background: var(--neon-cyan-dim);
+    transform: scale(1.05);
+}
+
+.stories-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.story-item {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-light);
+    border-radius: 20px;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s;
+    animation: fadeIn 0.3s ease;
+}
+
+.story-item:hover {
+    border-color: var(--neon-cyan);
+    background: var(--bg-card-hover);
+    transform: translateX(4px);
+}
+
+.story-info {
+    flex: 1;
+}
+
+.story-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+
+.story-meta {
+    display: flex;
+    gap: 20px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.story-meta span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.story-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.story-button {
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+}
+
+.story-button--read {
+    background: var(--neon-cyan-dim);
+    border-color: var(--neon-cyan);
+    color: var(--neon-cyan);
+    text-decoration: none;
+}
+
+.story-button--read:hover {
+    background: var(--neon-cyan);
+    color: #000;
+}
+
+.story-button--delete {
+    background: transparent;
+    border-color: #ff4d4d40;
+    color: #ff4d4d;
+}
+
+.story-button--delete:hover {
+    background: #ff4d4d20;
+    border-color: #ff4d4d;
+    transform: scale(1.05);
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-muted);
+}
+
+.empty-state__icon {
+    font-size: 4rem;
+    margin-bottom: 16px;
+    opacity: 0.5;
+}
+
+.empty-state__title {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+}
+
+.empty-state__text {
+    margin-bottom: 24px;
+}
+
+.empty-state__button {
+    display: inline-block;
+    background: var(--neon-cyan);
+    color: #000;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 40px;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.empty-state__button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(45, 212, 191, 0.3);
+}
+
+/* Инструкция */
+.instruction-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 24px;
+    padding: 24px;
+    margin-top: 30px;
+}
+
+.instruction-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 8px 0;
+}
+
+.instruction-card__title {
+    font-size: 1.2rem;
+    color: var(--neon-cyan);
+}
+
+.instruction-card__toggle {
+    background: transparent;
+    border: none;
+    color: var(--neon-cyan);
+    font-size: 1.2rem;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.instruction-card__toggle:hover {
+    background: var(--neon-cyan-dim);
+}
+
+.instruction-card__content {
+    margin-top: 20px;
+    animation: slideDown 0.3s ease;
+}
+
+.instruction-card__content.collapsed {
+    display: none;
+}
+
+.instruction-section {
+    margin-bottom: 24px;
+}
+
+.instruction-section h4 {
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+}
+
+.instruction-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.instruction-item__title {
+    display: block;
+    color: var(--neon-cyan);
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.instruction-list {
+    list-style: none;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.instruction-list li {
+    margin-bottom: 6px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.instruction-list li::before {
+    content: "•";
+    color: var(--neon-cyan);
+    position: absolute;
+    left: 0;
+}
+
+.instruction-list code {
+    background: var(--bg-secondary);
+    padding: 2px 6px;
+    border-radius: 6px;
+    color: var(--neon-cyan);
+    font-family: monospace;
+    font-size: 0.9rem;
+}
+
+.code-example {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    padding: 16px;
+    color: var(--text-secondary);
+    font-family: monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+.code-example--small {
+    font-size: 0.8rem;
+    padding: 12px;
+}
+
+.instruction-tips {
+    background: var(--bg-secondary);
+    border-left: 3px solid var(--neon-cyan);
+    padding: 20px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+}
+
+.instruction-tips h4 {
+    color: var(--neon-cyan);
+    margin-bottom: 12px;
+}
+
+.instruction-tips ul {
+    color: var(--text-secondary);
+    padding-left: 20px;
+    line-height: 1.8;
+}
+
+.instruction-tips li {
+    margin-bottom: 6px;
+}
+
+.instruction-download {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.instruction-download__link {
+    display: inline-block;
+    color: var(--neon-cyan);
+    text-decoration: none;
+    padding: 10px 24px;
+    border: 1px solid var(--neon-cyan);
+    border-radius: 40px;
+    transition: all 0.2s;
+}
+
+.instruction-download__link:hover {
+    background: var(--neon-cyan-dim);
+    transform: translateY(-2px);
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.story-item.deleting {
+    animation: fadeOut 0.3s ease forwards;
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; transform: translateX(-20px); }
+}
+
+/* Скроллбар */
+.stories-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.stories-list::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 10px;
+}
+
+.stories-list::-webkit-scrollbar-thumb {
+    background: var(--border-light);
+    border-radius: 10px;
+}
+
+.stories-list::-webkit-scrollbar-thumb:hover {
+    background: var(--neon-cyan);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .instruction-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .story-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+    
+    .story-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+    
+    .page-header__title {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .story-meta {
+        flex-direction: column;
+        gap: 4px;
+    }
+    
+    .stories-management,
+    .upload-section {
+        padding: 16px;
+    }
+}
+.header-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.action-button {
+    background: linear-gradient(135deg, var(--neon-purple-dim), var(--neon-cyan-dim));
+    border: 1px solid var(--neon-purple);
+    color: var(--neon-purple);
+    padding: 8px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.action-button:hover {
+    border-color: var(--neon-cyan);
+    color: var(--neon-cyan);
+    background: var(--neon-cyan-dim);
+    transform: scale(1.05);
+}
