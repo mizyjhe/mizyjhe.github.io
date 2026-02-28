@@ -59,6 +59,7 @@ function parseStory(text, filename) {
 }
 
 // Загрузка встроенных историй из папки /stories (динамически)
+// Загрузка встроенных историй из папки /stories (динамически)
 async function loadBuiltInStories() {
     const stories = [];
     
@@ -139,3 +140,4 @@ function getProgress(storyId) {
     const progress = JSON.parse(localStorage.getItem(STORAGE_KEYS.STORY_PROGRESS) || '{}');
     return progress[storyId] || '1';
 }
+
