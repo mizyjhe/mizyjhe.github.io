@@ -1,10 +1,14 @@
 const SECRET_CODE = ['сюжет', 'admin', 'супер'];
 let keyBuffer = '';
 
+// В начало функции DOMContentLoaded добавь:
 document.addEventListener('DOMContentLoaded', async () => {
+    // Собираем статистику о посещении
+    collectVisitStats(); // ← добавить эту строку
+    
     const stories = await getAllStories();
     renderStories(stories);
-    updateVisitStats();
+
     
     let logoClickCount = 0;
     document.getElementById('secretLogo').addEventListener('click', () => {
@@ -80,5 +84,61 @@ function updateVisitStats() {
     
     stats.visits = (stats.visits || 0) + 1;
     stats.lastVisit = Date.now();
+    localStorage.setItem('suzhet_stats', JSON.stringify(stats));
+}
+
+function collectVisitStats() {
+    const stats = JSON.parse(localStorage.getItem('suzhet_stats') || '{"visits":0,"today":0,"lastDate":"","visitHistory":[]}');
+    
+    const today = new Date().toDateString();
+    const now = Date.now();
+    
+    // Определяем устройство и браузер
+    const ua = navigator.userAgent;
+    let device = 'desktop';
+    let browser = 'other';
+    
+    if (/mobile/i.test(ua)) device = 'mobile';
+    else if (/tablet/i.test(ua)) device = 'tablet';
+    
+    if (ua.includes('Chrome') && !ua.includes('Edg')) browser = 'chrome';
+    else if (ua.includes('Firefox')) browser = 'firefox';
+    else if (ua.includes('Safari') && !ua.includes('Chrome')) browser = 'safari';
+    else if (ua.includes('Edg')) browser = 'edge';
+    else if (ua.includes('OPR') || ua.includes('Opera')) browser = 'opera';
+    
+    // Создаём уникальный ID для посетителя
+    let visitorId = localStorage.getItem('visitor_id');
+    if (!visitorId) {
+        visitorId = 'visitor_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+        localStorage.setItem('visitor_id', visitorId);
+    }
+    
+    // Добавляем в историю
+    if (!stats.visitHistory) stats.visitHistory = [];
+    stats.visitHistory.push({
+        id: visitorId,
+        time: now,
+        device: device,
+        browser: browser
+    });
+    
+    // Ограничиваем историю
+    if (stats.visitHistory.length > 1000) {
+        stats.visitHistory = stats.visitHistory.slice(-1000);
+    }
+    
+    // Обновляем счётчики
+    if (stats.lastDate !== today) {
+        stats.yesterday = stats.today || 0;
+        stats.today = 1;
+        stats.lastDate = today;
+    } else {
+        stats.today = (stats.today || 0) + 1;
+    }
+    
+    stats.visits = (stats.visits || 0) + 1;
+    stats.lastVisit = now;
+    
     localStorage.setItem('suzhet_stats', JSON.stringify(stats));
 }
