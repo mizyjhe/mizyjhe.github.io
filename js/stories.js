@@ -58,21 +58,61 @@ function parseStory(text, filename) {
     return story;
 }
 
+// Загрузка встроенных историй из папки /stories (динамически)
 async function loadBuiltInStories() {
     const stories = [];
-    const storyFiles = ['1.txt', '2.txt', '3.txt'];
     
-    for (const file of storyFiles) {
+    try {
+        // Пытаемся получить список файлов через GitHub API (если сайт на GitHub Pages)
+        // Или через простой запрос к папке (но это не всегда работает)
+        
+        // Способ 1: Пробуем получить через fetch список файлов (если есть index.json)
         try {
-            const response = await fetch(`stories/${file}`);
-            const text = await response.text();
-            const story = parseStory(text, file);
-            story.builtIn = true;
-            stories.push(story);
+            const response = await fetch('stories/index.json');
+            if (response.ok) {
+                const fileList = await response.json();
+                for (const file of fileList) {
+                    if (file.endsWith('.txt')) {
+                        const storyResponse = await fetch(`stories/${file}`);
+                        const text = await storyResponse.text();
+                        const story = parseStory(text, file);
+                        story.builtIn = true;
+                        stories.push(story);
+                    }
+                }
+                return stories;
+            }
         } catch (e) {
-            console.log(`Не удалось загрузить ${file}`);
+            console.log('Нет index.json, пробуем стандартные имена');
         }
+        
+        // Способ 2: Пробуем стандартные имена (1.txt, 2.txt, 3.txt)
+        const defaultFiles = ['1.txt', '2.txt', '3.txt', '4.txt', '5.txt'];
+        for (const file of defaultFiles) {
+            try {
+                const response = await fetch(`stories/${file}`);
+                if (response.ok) {
+                    const text = await response.text();
+                    const story = parseStory(text, file);
+                    story.builtIn = true;
+                    stories.push(story);
+                }
+            } catch (e) {
+                // Файла нет - пропускаем
+            }
+        }
+        
+        // Способ 3: Пробуем получить список файлов через .htaccess или директорию (не всегда работает)
+        // Этот способ может не работать на GitHub Pages
+        try {
+            const response = await fetch('stories/');
+            // Это редко работает, но пробуем
+        } catch (e) {}
+        
+    } catch (error) {
+        console.error('Ошибка загрузки встроенных историй:', error);
     }
+    
     return stories;
 }
 
