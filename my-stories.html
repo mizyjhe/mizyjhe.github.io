@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сюжет — мои истории</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/my-stories.css">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="header__container">
+                <h1 class="logo" id="secretLogo">Сюжет</h1>
+                <nav class="nav">
+                    <a href="index.html" class="nav__link">Главная</a>
+                    <a href="my-stories.html" class="nav__link nav__link--active">Мои истории</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="main">
+            <div class="main__container">
+                <div class="page-header">
+                    <h2>📚</h2>
+                    <h2 class="page-header__title">Мои локальные истории</h2>
+                    <p class="page-header__subtitle">Истории, которые ты сохранил(а) в этом браузере</p>
+                </div>
+
+                <!-- Блок загрузки новой истории -->
+                <div class="upload-section">
+                    <div class="upload-section__header">
+                        <h3 class="upload-section__title">📂 Загрузить новую историю</h3>
+                        <p class="upload-section__description">.txt файл в формате Сюжета</p>
+                    </div>
+                    
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-area__icon">📄</div>
+                        <div class="upload-area__text">
+                            <span class="upload-area__primary">Выберите файл</span>
+                            <span class="upload-area__secondary">или перетащите сюда</span>
+                        </div>
+                        <input type="file" id="fileInput" accept=".txt" style="display: none;">
+                    </div>
+
+                    <div class="upload-preview" id="uploadPreview" style="display: none;">
+                        <div class="upload-preview__header">
+                            <span class="upload-preview__name">файл.txt</span>
+                            <span class="upload-preview__size">0 КБ</span>
+                        </div>
+                        <button class="upload-preview__button" id="confirmUpload">📥 Сохранить в мои истории</button>
+                    </div>
+                </div>
+
+                <!-- Список историй -->
+                
+                <div class="stories-list-header">
+                    <span class="stories-count" id="storiesCount">Загрузка...</span>
+                    <div class="header-actions">
+                        <button class="action-button" id="goToEditorBtn" title="Открыть редактор (требуется код)">
+                            ✍️ Редактор
+                        </button>
+                        <button class="refresh-button" id="refreshList">
+                            🔄 Обновить
+                        </button>
+                    </div>
+                </div>
+
+                    <div id="storiesList" class="stories-list">
+                        <!-- Сюда подгрузятся истории -->
+                    </div>
+                </div>
+
+                <!-- Инструкция по написанию историй -->
+                <div class="instruction-card">
+                    <div class="instruction-card__header">
+                        <h3 class="instruction-card__title">✍️ Как написать историю в блокноте</h3>
+                        <button class="instruction-card__toggle" id="toggleInstruction">▼</button>
+                    </div>
+                    
+                    <div class="instruction-card__content" id="instructionContent">
+                        <div class="instruction-section">
+                            <h4>📌 Базовый формат</h4>
+                            <pre class="code-example">
+НАЗВАНИЕ: Тайна старого дома
+ЖАНР: Мистика
+ПЕРСОНАЖ: Лена
+ПЕРСОНАЖ: Дима
+
+==
+1
+СИСТЕМА: Ты открываешь дверь
+ЛЕНА: Привет! Заходи
+[2] Зайти
+[3] Уйти
+
+==
+2
+ДИМА: Я рад тебя видеть
+[4] Обняться
+[5] Пожать руку
+
+==
+3
+СИСТЕМА: Ты уходишь в темноту
+КОНЕЦ
+
+==
+4
+СИСТЕМА: Вы обнимаетесь
+КОНЕЦ
+
+==
+5
+СИСТЕМА: Дружеское рукопожатие
+КОНЕЦ</pre>
+                        </div>
+
+                        <div class="instruction-grid">
+                            <div class="instruction-item">
+                                <span class="instruction-item__title">📋 Правила:</span>
+                                <ul class="instruction-list">
+                                    <li><code>НАЗВАНИЕ:</code> — обязательно</li>
+                                    <li><code>ЖАНР:</code> — обязательно</li>
+                                    <li><code>ПЕРСОНАЖ:</code> — имена героев</li>
+                                    <li><code>==</code> — разделитель сцен</li>
+                                    <li><code>1, 2, 3...</code> — номер сцены</li>
+                                    <li><code>ИМЯ: текст</code> — реплика</li>
+                                    <li><code>[2] текст</code> — вариант выбора (ведёт на сцену 2)</li>
+                                    <li><code>КОНЕЦ</code> — завершение истории</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="instruction-item">
+                                <span class="instruction-item__title">🎯 Пример для копирования:</span>
+                                <pre class="code-example code-example--small">
+НАЗВАНИЕ: Первая встреча
+ЖАНР: Драма
+ПЕРСОНАЖ: Лена
+
+==
+1
+ЛЕНА: Привет!
+[2] Привет!
+[3] Пока
+
+==
+2
+ЛЕНА: Как дела?
+[4] Отлично
+КОНЕЦ
+
+==
+3
+СИСТЕМА: Ты ушёл
+КОНЕЦ
+
+==
+4
+ЛЕНА: Круто!
+КОНЕЦ</pre>
+                            </div>
+                        </div>
+
+                        <div class="instruction-tips">
+                            <h4>💡 Советы:</h4>
+                            <ul>
+                                <li>Используй <strong>СИСТЕМА:</strong> для описаний</li>
+                                <li>Каждый вариант выбора должен вести на существующую сцену</li>
+                                <li>Можно создавать ветвления и несколько концовок</li>
+                                <li>Сохраняй файл в формате <strong>.txt</strong> с кодировкой UTF-8</li>
+                            </ul>
+                        </div>
+
+                        <div class="instruction-download">
+                            <a href="#" class="instruction-download__link" id="downloadTemplate">📥 Скачать шаблон истории</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="footer__container">
+                <p class="footer__copyright">© 2026 Сюжет</p>
+                <p class="footer__madeby">твои истории — твоё право</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/stories.js"></script>
+    <script src="js/my-stories.js"></script>
+</body>
+</html>
